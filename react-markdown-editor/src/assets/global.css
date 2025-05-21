@@ -1,0 +1,104 @@
+/* Global CSS styles */
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: row; /* Changed from column to row */
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.editor-textarea {
+  flex-basis: 50%; /* Take up 50% of the width */
+  flex-grow: 0; /* Do not allow to grow beyond 50% */
+  flex-shrink: 0; /* Do not allow to shrink less than 50% */
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: none;
+  box-sizing: border-box;
+  outline: none; /* Remove default focus outline */
+  border-right-width: 0; /* Avoid double border with preview */
+}
+
+.editor-textarea-focused {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  /* Ensure focused border is consistent if it was removed */
+  border-right-width: 0; 
+}
+
+.markdown-preview {
+  flex-basis: 50%; /* Take up 50% of the width */
+  flex-grow: 0; /* Do not allow to grow beyond 50% */
+  flex-shrink: 0; /* Do not allow to shrink less than 50% */
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Allow scrolling for preview content */
+  background-color: #f9f9f9; /* Slightly different background */
+  border: 1px solid #ccc; /* Add border to preview */
+}
+
+/* Optional: Basic styling for elements within the preview */
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.markdown-preview p {
+  margin-bottom: 0.5em;
+}
+.markdown-preview pre {
+  background-color: #eee;
+  padding: 8px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.markdown-preview code {
+  font-family: monospace; /* Use monospace for all code elements */
+}
+.markdown-preview blockquote {
+  border-left: 3px solid #ddd;
+  padding-left: 10px;
+  margin-left: 0;
+  color: #555;
+}
+.markdown-preview table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1em;
+}
+.markdown-preview th,
+.markdown-preview td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.markdown-preview th {
+  background-color: #f2f2f2;
+}
+
+/* Ensure code blocks within pre also use monospace */
+.markdown-preview pre code {
+  font-family: monospace;
+  background-color: transparent; /* Avoid double background if pre has one */
+  padding: 0; /* Avoid double padding */
+}
+
+/* Ensure inline code also uses monospace and has some distinction */
+.markdown-preview p > code,
+.markdown-preview li > code,
+.markdown-preview td > code {
+  font-family: monospace;
+  background-color: #f0f0f0; /* Light background for inline code */
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
