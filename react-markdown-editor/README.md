@@ -1,6 +1,7 @@
-# React Markdown Editor
+# React Markdown WYSIWYG Editor (Tiptap)
 
-A web-based Markdown editor built with React, Vite, and TypeScript, focusing on a clean writing experience with live preview.
+A web-based WYSIWYG Markdown editor built with React, Vite, Tiptap, and TypeScript. It aims to provide a clean, minimalist writing experience where Markdown-like syntax is rendered inline, inspired by editors like Typora.
+The current version implements the core editor page with styling based on the "Minimalist Writing Editor" mockup.
 
 ## Prerequisites
 
@@ -48,14 +49,16 @@ The production-ready files will be placed in the `dist/` directory.
 - **Vite**: A modern frontend build tool that provides a fast development experience.
 - **TypeScript**: A superset of JavaScript that adds static typing.
 - **React Router DOM (`react-router-dom`)**: For declarative routing in React applications.
-- **React Markdown (`react-markdown`)**: A React component to render Markdown as HTML.
-- **Remark GFM (`remark-gfm`)**: A plugin for `react-markdown` to support GitHub Flavored Markdown (tables, footnotes, strikethrough, etc.).
+- **Tiptap (`@tiptap/react`, `@tiptap/pm`, `@tiptap/starter-kit`)**: A headless, framework-agnostic toolkit for building rich text WYSIWYG editors.
+    - `@tiptap/starter-kit`: Provides a collection of common Tiptap extensions (headings, bold, italic, lists, blockquotes, code blocks, etc.).
+    - `@tiptap/extension-highlight`: A Tiptap extension to support text highlighting.
+    - `@tiptap/pm`: The ProseMirror toolkit, which Tiptap is built upon, providing the core low-level editor functionality.
 
 ## Project Structure Highlights
 
 - `src/App.tsx`: Main application component, sets up routing.
 - `src/main.tsx`: Entry point of the application, renders App.tsx.
-- `src/pages/EditorPage.tsx`: The core editor UI component.
+- `src/pages/EditorPage.tsx`: The core component providing the WYSIWYG editor interface using Tiptap, styled to match the "Minimalist Writing Editor" mockup.
 - `src/assets/global.css`: Global styles for the application.
 - `src/components/`: For reusable UI components (currently empty).
 - `vite.config.ts`: Vite configuration file (root level).
@@ -63,7 +66,7 @@ The production-ready files will be placed in the `dist/` directory.
 
 ## Key Configuration Files
 
--   **`package.json`**: This file is central to any Node.js project. It lists project dependencies (like React, Vite), scripts for running tasks (`npm run dev`, `npm run build`), and other metadata.
+-   **`package.json`**: This file is central to any Node.js project. It lists project dependencies (like React, Vite, Tiptap), scripts for running tasks (`npm run dev`, `npm run build`), and other metadata.
 -   **`vite.config.ts`**: The configuration file for Vite. Here you can customize Vite's behavior, such as adding plugins, configuring the dev server, or modifying build options.
 -   **`tsconfig.json`**: The configuration file for the TypeScript compiler. It specifies how TypeScript should compile your `.ts` and `.tsx` files, including compiler options, type checking rules, and file inclusion/exclusion.
 

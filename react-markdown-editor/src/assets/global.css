@@ -4,101 +4,173 @@ body, html, #root {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: sans-serif;
+  font-family: 'Courier New', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* As per mockup */
+  background-color: #fefefe; /* As per mockup */
+  color: #2c2c2c; /* As per mockup */
+  line-height: 1.6; /* Added for global consistency */
 }
 
 .editor-container {
   display: flex;
-  flex-direction: row; /* Changed from column to row */
+  flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
 }
 
-.editor-textarea {
-  flex-basis: 50%; /* Take up 50% of the width */
-  flex-grow: 0; /* Do not allow to grow beyond 50% */
-  flex-shrink: 0; /* Do not allow to shrink less than 50% */
-  border: 1px solid #ccc;
-  padding: 10px;
-  font-size: 16px;
-  line-height: 1.5;
-  resize: none;
+.editor-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+  min-height: 50px; /* As per mockup */
   box-sizing: border-box;
-  outline: none; /* Remove default focus outline */
-  border-right-width: 0; /* Avoid double border with preview */
 }
 
-.editor-textarea-focused {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  /* Ensure focused border is consistent if it was removed */
-  border-right-width: 0; 
+.nav-controls {
+  display: flex;
+  gap: 8px; /* As per mockup */
+  margin-right: 16px; /* As per mockup */
 }
 
-.markdown-preview {
-  flex-basis: 50%; /* Take up 50% of the width */
-  flex-grow: 0; /* Do not allow to grow beyond 50% */
-  flex-shrink: 0; /* Do not allow to shrink less than 50% */
-  padding: 10px;
-  box-sizing: border-box;
-  overflow-y: auto; /* Allow scrolling for preview content */
-  background-color: #f9f9f9; /* Slightly different background */
-  border: 1px solid #ccc; /* Add border to preview */
+.nav-btn {
+  background: none;
+  border: 1px solid #ddd; /* As per mockup */
+  border-radius: 4px; /* As per mockup */
+  padding: 6px 10px; /* As per mockup */
+  cursor: pointer;
+  font-size: 14px; /* As per mockup */
+  color: #666; /* As per mockup */
+  transition: all 0.2s ease; /* As per mockup */
 }
 
-/* Optional: Basic styling for elements within the preview */
-.markdown-preview h1,
-.markdown-preview h2,
-.markdown-preview h3 {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+.nav-btn:hover {
+  background-color: #f0f0f0; /* As per mockup */
+  border-color: #ccc; /* As per mockup */
 }
-.markdown-preview p {
-  margin-bottom: 0.5em;
+
+.filename-display {
+  font-size: 14px; /* As per mockup */
+  color: #555; /* As per mockup */
+  font-weight: normal; /* As per mockup */
 }
-.markdown-preview pre {
-  background-color: #eee;
-  padding: 8px;
+
+.tiptap-editor-wrapper {
+  flex-grow: 1;
+  display: flex; 
+  flex-direction: column; 
+  overflow-y: auto; 
+}
+
+/* Scrollbar styling for .tiptap-editor-wrapper */
+.tiptap-editor-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tiptap-editor-wrapper::-webkit-scrollbar-track {
+  background: transparent; /* Or #fefefe if issues with transparency */
+}
+
+.tiptap-editor-wrapper::-webkit-scrollbar-thumb {
+  background: #ccc;
   border-radius: 4px;
-  overflow-x: auto;
 }
-.markdown-preview code {
-  font-family: monospace; /* Use monospace for all code elements */
+
+.tiptap-editor-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
 }
-.markdown-preview blockquote {
-  border-left: 3px solid #ddd;
-  padding-left: 10px;
-  margin-left: 0;
-  color: #555;
-}
-.markdown-preview table {
-  border-collapse: collapse;
+
+.ProseMirror {
+  flex-grow: 1; 
+  max-width: 800px; 
   width: 100%;
-  margin-bottom: 1em;
-}
-.markdown-preview th,
-.markdown-preview td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-.markdown-preview th {
-  background-color: #f2f2f2;
+  margin: 0 auto; 
+  padding: 20px; 
+  font-size: 16px;
+  line-height: 1.6; /* Already here, but global one supports it */
+  background-color: transparent; 
+  border: none; 
+  border-radius: 0; 
+  box-shadow: none; 
 }
 
-/* Ensure code blocks within pre also use monospace */
-.markdown-preview pre code {
-  font-family: monospace;
-  background-color: transparent; /* Avoid double background if pre has one */
-  padding: 0; /* Avoid double padding */
+.ProseMirror:focus {
+  outline: none; 
+  border: none; 
+  box-shadow: none; 
 }
 
-/* Ensure inline code also uses monospace and has some distinction */
-.markdown-preview p > code,
-.markdown-preview li > code,
-.markdown-preview td > code {
+/* Specific content styling for .ProseMirror elements */
+.ProseMirror h1 { 
+  font-size: 28px; 
+  font-weight: bold;
+  margin: 28px 0 20px 0; 
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px; 
+}
+
+.ProseMirror h2 { 
+  font-size: 24px; 
+  font-weight: bold;
+  margin: 24px 0 16px 0; 
+}
+
+.ProseMirror h3 {
+  font-size: 20px; 
+  font-weight: bold;
+  margin: 20px 0 12px 0; 
+}
+
+.ProseMirror p {
+  margin-bottom: 0.8em; 
+}
+
+.ProseMirror em { 
+  font-style: italic; 
+}
+
+.ProseMirror strong { 
+  font-weight: bold; 
+}
+
+.ProseMirror del, .ProseMirror s { 
+  text-decoration: line-through;
+  color: #888; 
+}
+
+.ProseMirror mark { 
+  background-color: #e3f2fd; 
+  padding: 2px 4px; 
+  border-radius: 3px; 
+  color: inherit; 
+}
+
+.ProseMirror ul, .ProseMirror ol {
+  margin-left: 1.5em;
+  margin-bottom: 0.8em;
+}
+.ProseMirror blockquote {
+  border-left: 3px solid #ddd;
+  margin-left: 0;
+  padding-left: 1em;
+  font-style: italic;
+}
+.ProseMirror pre {
+  background: #f4f4f4;
+  border-radius: 4px;
+  padding: 0.8em 1em;
+  white-space: pre-wrap;
   font-family: monospace;
-  background-color: #f0f0f0; /* Light background for inline code */
+}
+.ProseMirror code { 
+  background: rgba(0,0,0,0.05);
   padding: 0.2em 0.4em;
-  border-radius: 3px;
+  border-radius: 2px;
+  font-family: monospace;
+}
+
+.ProseMirror pre code {
+  font-family: monospace;
+  background-color: transparent; 
+  padding: 0;
 }
