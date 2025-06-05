@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import EditorPage from './pages/EditorPage';
 // Global CSS is imported in main.tsx and EditorPage.tsx, so not needed here.
