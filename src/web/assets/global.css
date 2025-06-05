@@ -1,3 +1,11 @@
+:root {
+  --background-color: #FFFFFF;
+  --text-color: #1C1C1E;
+  --secondary-text-color: #8E8E93;
+  --border-color: #E5E5EA;
+  --primary-color: #007AFF;
+}
+
 /* Global CSS styles */
 
 body, html, #root {
@@ -5,8 +13,8 @@ body, html, #root {
   padding: 0;
   height: 100%;
   font-family: 'Courier New', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* As per mockup */
-  background-color: #fefefe; /* As per mockup */
-  color: #2c2c2c; /* As per mockup */
+  background-color: var(--background-color); /* As per mockup */
+  color: var(--text-color); /* As per mockup */
   line-height: 1.6; /* Added for global consistency */
 }
 
@@ -21,8 +29,8 @@ body, html, #root {
   display: flex;
   align-items: center;
   padding: 12px 20px;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
   min-height: 50px; /* As per mockup */
   box-sizing: border-box;
 }
@@ -35,23 +43,23 @@ body, html, #root {
 
 .nav-btn {
   background: none;
-  border: 1px solid #ddd; /* As per mockup */
+  border: 1px solid var(--border-color); /* As per mockup */
   border-radius: 4px; /* As per mockup */
   padding: 6px 10px; /* As per mockup */
   cursor: pointer;
   font-size: 14px; /* As per mockup */
-  color: #666; /* As per mockup */
+  color: var(--secondary-text-color); /* As per mockup */
   transition: all 0.2s ease; /* As per mockup */
 }
 
 .nav-btn:hover {
-  background-color: #f0f0f0; /* As per mockup */
-  border-color: #ccc; /* As per mockup */
+  background-color: var(--background-color); /* As per mockup */
+  border-color: var(--border-color); /* As per mockup */
 }
 
 .filename-display {
   font-size: 14px; /* As per mockup */
-  color: #555; /* As per mockup */
+  color: var(--text-color); /* As per mockup */
   font-weight: normal; /* As per mockup */
 }
 
@@ -72,12 +80,12 @@ body, html, #root {
 }
 
 .tiptap-editor-wrapper::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: var(--border-color);
   border-radius: 4px;
 }
 
 .tiptap-editor-wrapper::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+  background: var(--border-color);
 }
 
 .ProseMirror {
@@ -105,7 +113,7 @@ body, html, #root {
   font-size: 28px; 
   font-weight: bold;
   margin: 28px 0 20px 0; 
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 10px; 
 }
 
@@ -135,7 +143,7 @@ body, html, #root {
 
 .ProseMirror del, .ProseMirror s { 
   text-decoration: line-through;
-  color: #888; 
+  color: var(--secondary-text-color); 
 }
 
 .ProseMirror mark { 
@@ -150,13 +158,13 @@ body, html, #root {
   margin-bottom: 0.8em;
 }
 .ProseMirror blockquote {
-  border-left: 3px solid #ddd;
+  border-left: 3px solid var(--border-color);
   margin-left: 0;
   padding-left: 1em;
   font-style: italic;
 }
 .ProseMirror pre {
-  background: #f4f4f4;
+  background: var(--background-color);
   border-radius: 4px;
   padding: 0.8em 1em;
   white-space: pre-wrap;
