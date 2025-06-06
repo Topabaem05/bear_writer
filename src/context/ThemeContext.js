@@ -1,5 +1,6 @@
 // 테마 관리 Context
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ThemeContext = createContext();
@@ -16,59 +17,62 @@ const lightTheme = {
   dark: false,
   backgroundColor: '#FFFFFF',
   textColor: '#1C1C1E',
-  secondaryTextColor: '#8E8E93',
-  placeholderColor: '#C7C7CC',
+  primaryColor: '#007AFF', // Accent
+  secondaryTextColor: '#8E8E93', // Secondary
+  dimmedTextColor: '#8E8E93', // Secondary
   borderColor: '#E5E5EA',
-  primaryColor: '#007AFF',
-  errorColor: '#FF3B30',
-  successColor: '#34C759',
-  warningColor: '#FF9500',
+  focusBackgroundColor: '#E5F1FF', // Highlight
+  placeholderColor: '#C7C7CC',
   inputBackgroundColor: '#F2F2F7',
-  toolbarBackgroundColor: '#F9F9F9',
+  toolbarBackgroundColor: '#FFFFFF',
   toolbarIconColor: '#8E8E93',
   activeButtonColor: '#007AFF',
   activeButtonTextColor: '#FFFFFF',
-  focusBackgroundColor: 'rgba(0, 122, 255, 0.1)',
-  dimmedTextColor: '#8E8E93',
-  fontSize: 16,
-  fontFamily: 'SF Mono',
-  lineHeight: 1.5,
+  errorColor: '#FF3B30',
+  successColor: '#34C759',
+  warningColor: '#FF9500',
+  // Typography related keys will be added to the theme object directly
 };
 
 const darkTheme = {
   dark: true,
-  backgroundColor: '#000000',
+  backgroundColor: '#1C1C1E',
   textColor: '#FFFFFF',
-  secondaryTextColor: '#8E8E93',
-  placeholderColor: '#48484A',
+  primaryColor: '#0A84FF', // Accent
+  secondaryTextColor: '#8E8E93', // Secondary
+  dimmedTextColor: '#8E8E93', // As per spec, could be #6E6E73 for more differentiation
   borderColor: '#38383A',
-  primaryColor: '#0A84FF',
-  errorColor: '#FF453A',
-  successColor: '#30D158',
-  warningColor: '#FF9F0A',
-  inputBackgroundColor: '#1C1C1E',
+  focusBackgroundColor: '#2C3A47', // Highlight
+  placeholderColor: '#5A5A5E', // Or current #48484A
+  inputBackgroundColor: '#2C2C2E', // Or current #1C1C1E
   toolbarBackgroundColor: '#1C1C1E',
   toolbarIconColor: '#8E8E93',
   activeButtonColor: '#0A84FF',
   activeButtonTextColor: '#FFFFFF',
-  focusBackgroundColor: 'rgba(10, 132, 255, 0.1)',
-  dimmedTextColor: '#48484A',
-  fontSize: 16,
-  fontFamily: 'SF Mono',
-  lineHeight: 1.5,
+  errorColor: '#FF453A',
+  successColor: '#30D158',
+  warningColor: '#FF9F0A',
+  // Typography related keys will be added to the theme object directly
 };
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [settings, setSettings] = useState({
-    fontSize: 16,
+    fontSize: 16, // Default Body text size
     lineHeight: 1.5,
-    fontFamily: 'SF Mono',
+    fontFamily: Platform.OS === 'ios' ? 'SF Pro Text' : 'Roboto', // Primary Font
   });
 
   const theme = {
     ...(isDarkMode ? darkTheme : lightTheme),
-    ...settings,
+    ...settings, // Includes fontFamily, fontSize (as fontSizeBody), lineHeight
+    monospaceFontFamily: Platform.OS === 'ios' ? 'SF Mono' : 'Roboto Mono',
+    fontSizeHeading1: 24,
+    fontSizeHeading2: 22,
+    fontSizeHeading3: 20,
+    fontSizeBody: settings.fontSize, // explicit mapping for clarity
+    fontSizeUIMelement: 14,
+    fontSizeMetadata: 12,
   };
 
   useEffect(() => {

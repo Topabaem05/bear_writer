@@ -18,7 +18,8 @@ export default function WordCounter({ text, theme }) {
       backgroundColor: theme.backgroundColor,
     },
     text: {
-      fontSize: 12,
+      fontSize: theme.fontSizeMetadata,
+      fontFamily: theme.fontFamily,
       color: theme.secondaryTextColor,
       textAlign: 'right',
     },
