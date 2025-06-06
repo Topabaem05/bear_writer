@@ -1,6 +1,6 @@
 # React Markdown WYSIWYG Editor (Tiptap)
 
-A web-based WYSIWYG Markdown editor built with React, Vite, Tiptap, and TypeScript. It aims to provide a clean, minimalist writing experience where Markdown-like syntax is rendered inline, inspired by editors like Typora.
+A desktop WYSIWYG Markdown editor built with React, Electron, Vite, Tiptap, and TypeScript. It aims to provide a clean, minimalist writing experience where Markdown-like syntax is rendered inline, inspired by editors like Typora.
 The current version implements the core editor page with styling based on the "Minimalist Writing Editor" mockup.
 
 ## Prerequisites

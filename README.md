@@ -1,12 +1,12 @@
 # Bear Writer
 
-This repository now contains both the React Native code and a web-based markdown editor.
+This repository contains the React Native mobile application and a desktop version powered by Electron.
 
 - `src/` – React Native components, contexts and screens.
-- `src/web/` – React web editor based on Tiptap.
-- `web/` – configuration for the web project (Vite, TypeScript, etc.).
+- `src/web/` – React UI used in the Electron renderer.
+- `electron/` – configuration for the desktop project (Vite, TypeScript and Electron).
 
-The web editor UI shares the theme colors from the React Native app for a consistent look and feel.
+The desktop UI shares the theme colors from the React Native app for a consistent look and feel.
 
 ## Building
 
@@ -22,19 +22,14 @@ The web editor UI shares the theme colors from the React Native app for a consis
    ```
    Use `npm run android` or `npm run ios` to open the app on a simulator or device.
 
-### Web Editor
+### Desktop (Electron)
 
-1. Install dependencies inside the `web/` directory:
+1. Install dependencies inside the `electron/` directory:
    ```bash
-   cd web
+   cd electron
    npm install
    ```
-2. Build the static site:
+2. Build the renderer and start Electron:
    ```bash
-   npm run build
-   ```
-   The compiled files will be placed in `web/dist`.
-3. To run a local development server instead, use:
-   ```bash
-   npm run dev
+   npm run electron
    ```
