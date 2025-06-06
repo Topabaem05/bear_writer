@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WriteFlow UI 계획서</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>WriteFlow UI 디자인</h1>
+            <p class="subtitle">미니멀리스트 글쓰기 앱을 위한 사용자 인터페이스 계획</p>
+        </header>
+
+        <main class="slideshow-container">
+            <div class="slide-wrapper">
+                <div id="slides" class="slides"></div>
+            </div>
+
+            <div class="controls">
+                <button id="prev-btn" class="btn btn--outline control-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span class="sr-only">이전</span>
+                </button>
+                
+                <div class="slide-counter">
+                    <span id="current-slide">1</span> / <span id="total-slides">9</span>
+                </div>
+                
+                <button id="next-btn" class="btn btn--outline control-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                    <span class="sr-only">다음</span>
+                </button>
+            </div>
+
+            <button id="fullscreen-btn" class="btn btn--secondary fullscreen-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                    <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
+                    <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
+                    <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                </svg>
+                <span>전체화면</span>
+            </button>
+        </main>
+
+        <footer class="footer">
+            <p>© 2025 WriteFlow UI 계획서 - 모든 권리 보유</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
