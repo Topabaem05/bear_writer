@@ -1,6 +1,6 @@
 // 에디터 툴바 컴포넌트
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 export default function EditorToolbar({ textInputRef, theme, onFocusToggle, focusMode }) {
@@ -23,17 +23,24 @@ export default function EditorToolbar({ textInputRef, theme, onFocusToggle, focu
   const styles = StyleSheet.create({
     toolbar: {
       flexDirection: 'row',
-      justifyContent: 'space-around',
+      // justifyContent: 'space-around', // ScrollView will handle spacing
       alignItems: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 20,
+      height: 44, // Fixed height
       backgroundColor: theme.toolbarBackgroundColor,
       borderTopWidth: 1,
       borderTopColor: theme.borderColor,
     },
+    scrollViewContent: {
+      flexGrow: 1, // Ensures content can fill scrollview if not overflowing
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: 12, // Horizontal padding for the content within ScrollView
+      justifyContent: 'space-around', // Distribute items evenly if not enough to scroll
+    },
     button: {
-      padding: 8,
+      padding: 8, // Padding for touchable area
       borderRadius: 6,
+      marginHorizontal: 4, // Add some margin between buttons
     },
     activeButton: {
       backgroundColor: theme.activeButtonColor,
@@ -42,19 +49,25 @@ export default function EditorToolbar({ textInputRef, theme, onFocusToggle, focu
 
   return (
     <View style={styles.toolbar}>
-      {toolbarButtons.map((button, index) => (
-        <TouchableOpacity
-          key={index}
-          style={[styles.button, button.active && styles.activeButton]}
-          onPress={button.action}
-        >
-          <Icon 
-            name={button.icon} 
-            size={20} 
-            color={button.active ? theme.activeButtonTextColor : theme.toolbarIconColor} 
-          />
-        </TouchableOpacity>
-      ))}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.scrollViewContent}
+      >
+        {toolbarButtons.map((button, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[styles.button, button.active && styles.activeButton]}
+            onPress={button.action}
+          >
+            <Icon
+              name={button.icon}
+              size={20}
+              color={button.active ? theme.activeButtonTextColor : theme.toolbarIconColor}
+            />
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
     </View>
   );
 }
