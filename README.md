@@ -1,16 +1,13 @@
 # Bear Writer
 
-This repository contains the React Native mobile application and a desktop version powered by Electron.
+This repository contains a React Native application that runs on mobile and desktop. The desktop build uses Electron and the same React Native codebase compiled for the web.
 
-- `src/` – React Native components, contexts and screens.
-- `src/web/` – React UI used in the Electron renderer.
-- `electron/` – configuration for the desktop project (Vite, TypeScript and Electron).
-
-The desktop UI shares the theme colors from the React Native app for a consistent look and feel.
+- `src/` – shared React Native components, contexts and screens.
+- `electron/` – minimal Electron wrapper that loads the exported web build.
 
 ## Building
 
-### React Native
+### React Native (mobile)
 
 1. Install dependencies:
    ```bash
@@ -24,12 +21,11 @@ The desktop UI shares the theme colors from the React Native app for a consisten
 
 ### Desktop (Electron)
 
-1. Install dependencies inside the `electron/` directory:
-   ```bash
-   cd electron
-   npm install
-   ```
-2. Build the renderer and start Electron:
+1. Build the web version and launch Electron:
    ```bash
    npm run electron
+   ```
+   During development you can run the web server with `npm start` and launch Electron with:
+   ```bash
+   ELECTRON_DEV=true electron electron
    ```

@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "electron": "npm --prefix electron run electron"
+    "export-web": "expo export --platform web",
+    "electron": "npm run export-web && electron electron"
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.0",
