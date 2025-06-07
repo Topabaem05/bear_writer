@@ -1,20 +1,22 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
+const isDev = process.env.ELECTRON_DEV === 'true';
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 1000,
     height: 700,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
 
-  if (process.env.VITE_DEV_SERVER_URL) {
-    win.loadURL(process.env.VITE_DEV_SERVER_URL);
+  if (isDev) {
+    win.loadURL('http://localhost:19006');
   } else {
-    win.loadFile(path.join(__dirname, 'dist/index.html'));
+    win.loadFile(path.join(__dirname, '..', 'web-build', 'index.html'));
   }
 }
 
